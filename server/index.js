@@ -5,34 +5,22 @@ import cors from 'cors'
 import connectDB from './connectDB.js';
 import patientsRoutes from './routes/patientsRoutes.js';
 
-// Configure .env
-dotenv.config()
 
-// Connect Database
-connectDB()
-
-// Iniatilse express app
-const app = express()
-
-
-// Body parser
-app.use(express.urlencoded({ extended: false }))
-app.use(express.json())
-// initialize cors
+dotenv.config();
+connectDB();
+const app = express();
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.get('/',(req, res) => {
-    res.send("hi")
-})
+// app.use('/',(req, res) => {
+//     res.send("This is a stack overflow clone API")
+// })
 
-// Routes
-app.use('/patients/', patientsRoutes);
+app.use("/patients", patientsRoutes);
 
-// Declare PORT
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5000;
 
-// Start the server
-app.listen(
-    PORT, 
-    console.log(`Server running on port ${PORT}`)
-)
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
+});
