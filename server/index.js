@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(cors());
 
 // Routes
-app.use('/', patientsRoutes);
+app.use('/patients/', patientsRoutes);
 
 // Declare PORT
 const PORT = process.env.PORT || 5001
