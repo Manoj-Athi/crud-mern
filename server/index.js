@@ -21,6 +21,10 @@ app.use(express.json())
 // initialize cors
 app.use(cors());
 
+app.get('/',(req, res) => {
+    res.send("hi")
+})
+
 // Routes
 app.use('/patients/', patientsRoutes);
 
