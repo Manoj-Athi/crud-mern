@@ -14,15 +14,15 @@ connectDB()
 // Iniatilse express app
 const app = express()
 
+
 // Body parser
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-
 // initialize cors
 app.use(cors());
 
 // Routes
-app.use('/patients', patientsRoutes);
+app.use('/', patientsRoutes);
 
 // Declare PORT
 const PORT = process.env.PORT || 5001
