@@ -14,8 +14,7 @@ export const createPatient = async (req, res) => {
             data: patientRecord
         });
     } catch (error) {
-        console.log(error);
-        res.status(409).json({
+        res.status(500).json({
             message: error.message,
             status: "ERROR",
         });
@@ -34,8 +33,7 @@ export const getAllPatients = async (req, res) => {
             data: allPatientsRecord
         });
     } catch (error) {
-        console.log(error);
-        res.status(409).json({
+        res.status(500).json({
             message: error.message,
             status: "ERROR",
         });
@@ -45,28 +43,20 @@ export const getAllPatients = async (req, res) => {
 export const updatePatient = async (req, res) => {
     const {id: _id} = req.params;
     const { values } = req.body;
-    console.log(values)
     try {
         const update = await Patient.updateOne(
             { _id },
             values
         );
-        console.log(update)
         if(!update){
             throw new Error("Unable to update patient details");
-        }
-        const updatedPatient = await Patient.findOne({ _id });
-        if(!updatePatient){
-            throw new Error("Unable to fetch the updated patient details");
         }
         res.status(200).json({
             message: "Updated patient details",
             status: "SUCCESS",
-            data: updatedPatient
         });
     } catch (error) {
-        console.log(error);
-        res.status(409).json({
+        res.status(500).json({
             message: error.message,
             status: "ERROR",
         });
@@ -80,7 +70,6 @@ export const deletePatient = async (req, res) => {
     }
     try {
         const data = await Patient.findByIdAndRemove(_id);
-        // console.log(data);
         if(data){
             res.status(200).json({
                 message: "Successfully deleted",
@@ -88,7 +77,7 @@ export const deletePatient = async (req, res) => {
             });
         }
     } catch (error) {
-        res.status(404).json({
+        res.status(500).json({
             message: error.message,
             status: "ERROR",
         });
