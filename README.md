@@ -30,7 +30,7 @@ npm start
 
 ## Live Link for the website:
 
-[Click here]()
+[Click here](https://crud-mern-stack.netlify.app/)
 
 ## Contributions
 

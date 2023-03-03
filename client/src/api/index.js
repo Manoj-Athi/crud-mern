@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: "http://localhost:5000/patients",
+    baseURL: "https://crud-mern-eta.vercel.app/patients",
 });
 
 export const fetchAllDetails = async () => {
