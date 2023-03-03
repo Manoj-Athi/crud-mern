@@ -1,6 +1,6 @@
 # CRUD operations using MERN stack
 
-This website is a question forum and made to look like Stack Overflow.
+This project is a simple Mern stack application used to perform crud operations
 
 ## Technologies used:
 
